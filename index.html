@@ -1,0 +1,21 @@
+---
+layout: default
+title: Home
+permalink: /
+---
+<h1 style="font-size: 2.25rem; margin-bottom: 1rem;">Welcome to {{ site.title | default: "Accessible Jekyll Theme" }}</h1>
+<p style="margin-bottom: 1rem;">This is a WCAG 2.2 AAA compliant Jekyll theme designed for accessibility and responsiveness. Explore the <a href="{{ site.baseurl }}/blog/" style="color: #1d4ed8;">Blog</a>, learn more on the <a href="{{ site.baseurl }}/about/" style="color: #1d4ed8;">About</a> page, or get in touch via the <a href="{{ site.baseurl }}/contact/" style="color: #1d4ed8;">Contact</a> page.</p>
+
+<section aria-labelledby="recent-posts">
+  <h2 id="recent-posts" style="font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem;">Recent Blog Posts</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+    {% for post in site.posts limit:8 %}
+      <article style="border: 1px solid #d1d5db; padding: 1rem; border-radius: 0.25rem;" role="article">
+        <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;"><a href="{{ post.url }}" style="color: #1d4ed8; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-blue-700">{{ post.title }}</a></h3>
+        <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 0.5rem;">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></p>
+        <p style="margin-bottom: 0.5rem;">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+        <a href="{{ post.url }}" style="color: #1d4ed8; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-blue-700">Read more</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>

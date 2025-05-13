@@ -1,0 +1,16 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+<h1 style="font-size: 2.25rem; margin-bottom: 1rem;">Blog Posts</h1>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+  {% for post in site.posts %}
+    <article style="border: 1px solid #d1d5db; padding: 1rem; border-radius: 0.25rem;" role="article">
+      <h2 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;"><a href="{{ post.url }}" style="color: #1d4ed8; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-blue-700">{{ post.title }}</a></h2>
+      <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 0.5rem;">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></p>
+      <p style="margin-bottom: 0.5rem;">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+      <a href="{{ post.url }}" style="color: #1d4ed8; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-blue-700">Read more</a>
+    </article>
+  {% endfor %}
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "Home" }} | {{ site.title | default: "Accessible Jekyll Theme" }}</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+  <style>
+    body { font-size: 1.125rem; line-height: 1.5; background-color: #ffffff; color: #111827; }
+    header { display: block; background-color: #1e40af; color: #ffffff; padding: 1rem; font-family: Arial, sans-serif; }
+    header h1 { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+    header p { font-size: 1.125rem; margin-bottom: 1rem; }
+    header nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+    header nav a { color: #ffffff; text-decoration: none; font-size: 1rem; }
+    header nav a:hover, header nav a:focus { text-decoration: underline; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+    main { max-width: 1280px; margin: 0 auto; padding: 1rem; }
+    footer { background-color: #1e40af; color: #ffffff; padding: 1rem; text-align: center; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml">
+  {% seo %}
+</head>
+<body>
+  <header role="banner">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <h1>{{ site.title | default: "Accessible Jekyll Theme" }}</h1>
+      <p>{{ site.description | default: "A WCAG 2.2 AAA compliant Jekyll theme for GitHub Pages" }}</p>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="{{ site.baseurl }}/" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a></li>
+          <li><a href="{{ site.baseurl }}/about/" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a></li>
+          <li><a href="{{ site.baseurl }}/blog/" {% if page.url == '/blog/' %}aria-current="page"{% endif %}>Blog</a></li>
+          <li><a href="{{ site.baseurl }}/contact/" {% if page.url == '/contact/' %}aria-current="page"{% endif %}>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" role="main">
+    {{ content }}
+  </main>
+  <footer role="contentinfo">
+    <p>© {{ 'now' | date: '%Y' }} {{ site.title | default: "Accessible Jekyll Theme" }}. All rights reserved.</p>
+  </footer>
+</body>
+</html>

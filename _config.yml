@@ -1,0 +1,20 @@
+title: Accessible Jekyll Theme
+description: A WCAG 2.2 AAA compliant Jekyll theme for GitHub Pages
+baseurl: ""
+url: ""
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/

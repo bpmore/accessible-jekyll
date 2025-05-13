@@ -1,0 +1,106 @@
+/* Minimal styles for accessibility */
+body {
+  font-size: 1.125rem; /* Minimum 18px for AAA */
+  line-height: 1.5;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+header {
+  display: block !important;
+  background-color: #1e40af; /* Blue-800 */
+  color: #ffffff;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+header nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+header nav a:hover,
+header nav a:focus {
+  text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+article {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+article h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+article h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+article p {
+  margin-bottom: 1rem;
+}
+
+footer {
+  background-color: #1e40af;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111827;
+    color: #ffffff;
+  }
+  header {
+    background-color: #111827;
+  }
+  footer {
+    background-color: #111827;
+  }
+  a {
+    color: #60a5fa; /* Blue-400 for contrast */
+  }
+}

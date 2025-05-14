@@ -38,7 +38,7 @@
           {% endif %}
           {% assign other_pages = site.pages | where_exp: "page", "page.title" | where_exp: "page", "page.title != 'Home'" | sort: "title" %}
           {% for p in other_pages %}
-            {% if p.title == "About" or p.title == "Blog" or p.title == "Contact" %}
+            {% if p.title == "About" or p.title == "Blog" or p.title == "Contact" or p.title == "Help" %}
               <li>
                 <a href="{{ p.url | relative_url }}" style="color: #ffffff; text-decoration: none; font-size: 1rem;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-white" {% if page.url == p.url %}aria-current="page"{% endif %}>{{ p.title }}</a>
               </li>

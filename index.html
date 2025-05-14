@@ -11,8 +11,14 @@ permalink: /
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
     {% for post in site.posts limit:8 %}
       <article style="border: 1px solid #d1d5db; padding: 1rem; border-radius: 0.25rem;" role="article">
+        {% if post.image %}
+          <img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: 'Featured image for ' | append: post.title }}" style="max-width: 100%; height: auto; margin-bottom: 0.5rem; display: block;">
+        {% else %}
+          <div style="background-color: #d1d5db; width: 100%; height: 150px; margin-bottom: 0.5rem;"></div>
+        {% endif %}
         <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;"><a href="{{ post.url }}" style="color: #1d4ed8; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-blue-700">{{ post.title }}</a></h3>
         <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 0.5rem;">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></p>
+        <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 0.5rem;">By {{ post.author | default: "Anonymous" }}</p>
         <p style="margin-bottom: 0.5rem;">{{ post.excerpt | strip_html | truncate: 100 }}</p>
         <a href="{{ post.url }}" style="color: #1d4ed8; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-blue-700">Read more</a>
       </article>

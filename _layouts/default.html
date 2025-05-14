@@ -9,6 +9,8 @@
     body { font-size: 1.125rem; line-height: 1.5; background-color: #ffffff; color: #111827; }
     header { display: block; background-color: #1e40af; color: #ffffff; padding: 1rem; font-family: Arial, sans-serif; }
     header h1 { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+    header h1 a { color: #ffffff; text-decoration: none; }
+    header h1 a:hover, header h1 a:focus { text-decoration: underline; }
     header p { font-size: 1.125rem; margin-bottom: 1rem; }
     header nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
     header nav a { color: #ffffff; text-decoration: none; font-size: 1rem; }
@@ -24,7 +26,7 @@
   <a href="#main-content" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="focus:not-sr-only focus:absolute focus:bg-blue-700 focus:text-white focus:p-2">Skip to main content</a>
   <header role="banner">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <h1>{{ site.title | default: "Accessible Jekyll Theme" }}</h1>
+      <h1><a href="{{ site.baseurl }}/" style="color: #ffffff; text-decoration: none;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-white">{{ site.title | default: "Accessible Jekyll Theme" }}</a></h1>
       <p>{{ site.description | default: "A WCAG 2.2 AAA compliant Jekyll theme for GitHub Pages" }}</p>
       <nav role="navigation" aria-label="Main navigation">
         <ul>
@@ -36,11 +38,11 @@
           {% endif %}
           {% assign other_pages = site.pages | where_exp: "page", "page.title" | where_exp: "page", "page.title != 'Home'" | sort: "title" %}
           {% for p in other_pages %}
-          {% if p.title == "About" or p.title == "Blog" or p.title == "Contact" or p.title == "Help" %}
-          <li>
-            <a href="{{ p.url | relative_url }}" style="color: #ffffff; text-decoration: none; font-size: 1rem;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-white" {% if page.url == p.url %}aria-current="page"{% endif %}>{{ p.title }}</a>
-          </li>
-          {% endif %}
+            {% if p.title == "About" or p.title == "Blog" or p.title == "Contact" %}
+              <li>
+                <a href="{{ p.url | relative_url }}" style="color: #ffffff; text-decoration: none; font-size: 1rem;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-white" {% if page.url == p.url %}aria-current="page"{% endif %}>{{ p.title }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </nav>

@@ -1,10 +1,16 @@
 ---
 layout: default
 ---
-<article style="max-width: 65ch; margin: 0 auto;" role="article">
+<article role="article">
   <header>
+    {% if page.image %}
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: 'Featured image for ' | append: page.title }}" style="max-width: 100%; height: auto; margin-bottom: 1rem; display: block;">
+    {% else %}
+      <div style="background-color: #d1d5db; width: 100%; height: 200px; margin-bottom: 1rem;"></div>
+    {% endif %}
     <h1 style="font-size: 2.25rem; margin-bottom: 1rem;">{{ page.title }}</h1>
-    <p style="margin-bottom: 1rem;">Posted on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
+    <p style="margin-bottom: 0.5rem;">Posted on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
+    <p style="margin-bottom: 1rem;">By {{ page.author | default: "Anonymous" }}</p>
   </header>
   {{ content }}
 </article>

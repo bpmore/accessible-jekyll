@@ -1,6 +1,6 @@
 # Accessible Jekyll Theme
 
-A responsive Jekyll theme for GitHub Pages that meets WCAG 2.2 AAA requirements. Includes an About page, Contact page, Help page, and a Blog page with a 3-column layout.
+A responsive Jekyll theme for GitHub Pages that meets WCAG 2.2 AAA requirements. Includes an About page, Contact page, Help page, and a Blog page with a 4-column layout.
 
 All code provided by Grok.
 

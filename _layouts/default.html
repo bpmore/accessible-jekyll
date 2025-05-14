@@ -21,16 +21,27 @@
   {% seo %}
 </head>
 <body>
+  <a href="#main-content" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="focus:not-sr-only focus:absolute focus:bg-blue-700 focus:text-white focus:p-2">Skip to main content</a>
   <header role="banner">
     <div style="max-width: 1280px; margin: 0 auto;">
       <h1>{{ site.title | default: "Accessible Jekyll Theme" }}</h1>
       <p>{{ site.description | default: "A WCAG 2.2 AAA compliant Jekyll theme for GitHub Pages" }}</p>
       <nav role="navigation" aria-label="Main navigation">
         <ul>
-          <li><a href="{{ site.baseurl }}/" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a></li>
-          <li><a href="{{ site.baseurl }}/about/" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a></li>
-          <li><a href="{{ site.baseurl }}/blog/" {% if page.url == '/blog/' %}aria-current="page"{% endif %}>Blog</a></li>
-          <li><a href="{{ site.baseurl }}/contact/" {% if page.url == '/contact/' %}aria-current="page"{% endif %}>Contact</a></li>
+          {% assign home_page = site.pages | where: "title", "Home" | first %}
+          {% if home_page %}
+            <li>
+              <a href="{{ home_page.url | relative_url }}" style="color: #ffffff; text-decoration: none; font-size: 1rem;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-white" {% if page.url == home_page.url %}aria-current="page"{% endif %}>Home</a>
+            </li>
+          {% endif %}
+          {% assign other_pages = site.pages | where_exp: "page", "page.title" | where_exp: "page", "page.title != 'Home'" | sort: "title" %}
+          {% for p in other_pages %}
+          {% if p.title == "About" or p.title == "Blog" or p.title == "Contact" or p.title == "Help" %}
+          <li>
+            <a href="{{ p.url | relative_url }}" style="color: #ffffff; text-decoration: none; font-size: 1rem;" class="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-white" {% if page.url == p.url %}aria-current="page"{% endif %}>{{ p.title }}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
         </ul>
       </nav>
     </div>

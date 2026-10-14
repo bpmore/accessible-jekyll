@@ -18,3 +18,8 @@ collections:
   posts:
     output: true
     permalink: /blog/:title/
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
